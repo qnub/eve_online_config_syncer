@@ -1,4 +1,4 @@
-# Script to copy EVE online settings between caharcters and accounts on same computer
+# Script to copy EVE online settings between characters and accounts on same computer
 
 **ATTENTION! You need to have python 3 interpreter installed in system!** [download](https://www.python.org/downloads/) or [install from Microsoft store](https://www.microsoft.com/store/productId/9NRWMJP3717K)
 
