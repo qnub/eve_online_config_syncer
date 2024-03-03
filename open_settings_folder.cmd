@@ -1,2 +1,2 @@
 @echo off
-explorer %USERPROFILE%\AppData\Local\CCP\EVE\c_ccp_eve_online_tq_tranquility
+explorer %USERPROFILE%\AppData\Local\CCP\EVE\d_eve_tq_tranquility

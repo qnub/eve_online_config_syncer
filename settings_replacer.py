@@ -12,12 +12,11 @@ log_format = "%(asctime)s [%(levelname)s] <%(filename)s:%(lineno)d> %(message)s"
 logging.basicConfig(format=log_format, level=logging.INFO)
 log = logging.getLogger(SCRIPT.name)
 
+DEFAULT_GAME_FOLDER = "C:\CCP\EVE online"
+
 SCRIPT_DIR_PATH = SCRIPT.parent
 
 USER_HOME = str(Path.home())
-GAME_DIR_WINDOWS = USER_HOME / Path(
-    "AppData\Local\CCP\EVE\c_ccp_eve_online_tq_tranquility"
-)
 PROFILE_NAME_FILE = "profile_name.txt"
 PROFILE_NAME_FILE_PATH = SCRIPT_DIR_PATH / Path(PROFILE_NAME_FILE)
 
@@ -29,6 +28,31 @@ SETTINGS_USER_FILE_PREFIX = "core_user_"
 SYSTEM_USER_ID = "_"
 SETTINGS_CHAR_FILE_PREFIX = "core_char_"
 SYSTEM_CHAR_ID = "_"
+
+NON_ALPHABET_RE = re.compile(r"\W+", re.I | re.U)
+GAME_FODLER_FILE = "game_folder.txt"
+GAME_FODLER_FILE_PATH = SCRIPT_DIR_PATH / Path(GAME_FODLER_FILE)
+GAME_FOLDER_DEFAULT_PATH = "C:\\CCP\\EVE online"
+
+
+def get_profile_folder():
+    game_path = get_game_path()
+    prefix = NON_ALPHABET_RE.sub("_", game_path).lower()
+
+    return f"{prefix}_tq_tranquility"
+
+
+def get_game_path() -> str:
+    if GAME_FODLER_FILE_PATH.exists():
+        with open(GAME_FODLER_FILE_PATH) as f:
+            game_path = f.readline().strip()
+    else:
+        game_path = GAME_FOLDER_DEFAULT_PATH
+
+    return game_path
+
+
+GAME_DIR_WINDOWS = USER_HOME / Path("AppData\Local\CCP\EVE") / get_profile_folder()
 
 
 class FileRegEx:
