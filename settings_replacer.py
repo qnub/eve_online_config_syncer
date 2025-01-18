@@ -1,8 +1,9 @@
-from argparse import ArgumentParser
 import logging
-from pathlib import Path
+import os
 import re
 import shutil
+from argparse import ArgumentParser
+from pathlib import Path
 from typing import Optional, Set
 
 
@@ -226,6 +227,7 @@ if __name__ == "__main__":
         description="Replace other settings to provided or to latest updated in folder"
     )
     parser.add_argument("-f", "--file", type=str, default="")
+    parser.add_argument("-o", "--open", action="store_true")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
 
@@ -233,4 +235,8 @@ if __name__ == "__main__":
         log.setLevel(logging.DEBUG)
         log.debug("Enabled verbose mode")
 
+    if args.open:
+        os.startfile(GAME_DIR_WINDOWS)
+        exit()
+        
     replace(args.file)

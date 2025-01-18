@@ -1,2 +1,2 @@
 @echo off
-explorer %USERPROFILE%\AppData\Local\CCP\EVE\d_eve_tq_tranquility
+python3 %~dp0\settings_replacer.py -o
