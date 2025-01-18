@@ -12,8 +12,6 @@ log_format = "%(asctime)s [%(levelname)s] <%(filename)s:%(lineno)d> %(message)s"
 logging.basicConfig(format=log_format, level=logging.INFO)
 log = logging.getLogger(SCRIPT.name)
 
-DEFAULT_GAME_FOLDER = "C:\CCP\EVE online"
-
 SCRIPT_DIR_PATH = SCRIPT.parent
 
 USER_HOME = str(Path.home())
@@ -32,7 +30,7 @@ SYSTEM_CHAR_ID = "_"
 NON_ALPHABET_RE = re.compile(r"\W+", re.I | re.U)
 GAME_FODLER_FILE = "game_folder.txt"
 GAME_FODLER_FILE_PATH = SCRIPT_DIR_PATH / Path(GAME_FODLER_FILE)
-GAME_FOLDER_DEFAULT_PATH = "C:\\CCP\\EVE online"
+GAME_FOLDER_DEFAULT_PATH = r"C:\CCP\EVE online"
 
 
 def get_profile_folder():
